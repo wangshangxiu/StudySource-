@@ -1,0 +1,96 @@
+﻿NEWQ
+1、zookeeper
+2、linux版本控制软件创建有效仓库的标志是在仓库下有一个标志性的目录，比如.git, .svn
+
+3、配置网络
+Q：
+[root@localhost src]# ifconfig
+ens33: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet6 fe80::20c:29ff:fe13:d156  prefixlen 64  scopeid 0x20<link>
+        ether 00:0c:29:13:d1:56  txqueuelen 1000  (Ethernet)
+        RX packets 2534152  bytes 3068499591 (2.8 GiB)
+        RX errors 0  dropped 5073  overruns 0  frame 0
+        TX packets 501903  bytes 44572975 (42.5 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+A:
+[root@localhost network-scripts]# cd /etc/sysconfig/network-scripts
+[root@localhost network-scripts]# vi ifcfg-ens33 
+TYPE=Ethernet
+BOOTPROTO=static
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=ens33
+UUID=98fea12e-c85d-40be-b573-e8892f3b93b5
+DEVICE=ens33
+ONBOOT=yes
+IPADDR=192.168.1.93
+GATEWAY=192.168.1.1
+NETMASK=255.255.255.0
+DNS2=114.114.114.114
+DNS1=8.8.8.8
+[root@localhost network-scripts]# service network restart
+
+4、内核转存的意思
+5、svnsubversion is too, Error/ 多数是执行命令的客户端失去了网络，IP可能被占用了
+6、netstat -tlnp（listening process)
+7、sz /etc/sysconfig/network-scripts  可以下载此文件
+   rz打开资源管理器
+8、mongodb用mongodbuve能连接却打不开colletions主要是mongodb用的引擎版本问题。要在数据库那端换引擎
+9、一个端口可以出就可以入吗？
+10、p2p, stun
+11、commonview tool
+12、SecureCRTPortable 远程工具 rz/sz
+13、代码返回如果是最外层函数，作了内部逻辑处理更改后，根本就不用考虑调用者了
+14、developing based on requires. through requires analysing to designe how to realize the functions(开发基于需求）
+15、关于操作db的代码与操作数据库设计的解藕，代码对字段的数值查询接口设计时是不应该依赖索引的
+16、     
+	$project：修改输入文档的结构。可以用来重命名、增加或删除域，也可以用于创建计算结果以及嵌套文档。
+    $match：用于过滤数据，只输出符合条件的文档。$match使用MongoDB的标准查询操作。
+    $limit：用来限制MongoDB聚合管道返回的文档数。
+    $skip：在聚合管道中跳过指定数量的文档，并返回余下的文档。
+    $unwind：将文档中的某一个数组类型字段拆分成多条，每条包含数组中的一个值。
+    $group：将集合中的文档分组，可用于统计结果。
+    $sort：将输入文档排序后输出。
+    $geoNear：输出接近某一地理位置的有序文档。
+	$skip, $group, $sort这些操作可以在管道（pipe)模式执行, 也可以作为find()函数的findoption
+17、分页数据的前提是要对其进行排序，因为只有对同一份数据进行分页才是有意义的
+
+18、windows下C++ UI库 UI神器-SOUI/Unity's most powerful UI framework. It's free too.
+19、[root@localhost msg]# getconf LONG_BIT
+64
+[root@localhost msg]# uname -a
+Linux localhost.localdomain 3.10.0-514.el7.x86_64 #1 SMP Tue Nov 22 16:42:41 UTC 2016 x86_64 x86_64 x86_64 GNU/Linux
+[root@localhost msg]# uname -m
+x86_64
+[root@localhost msg]# arch
+x86_64
+[root@localhost msg]# 
+[root@localhost msg]# uname -mi
+x86_64 x86_64
+
+20、sublineText , linux, samba, tab补全
+21、CMakeList.txt的关键字
+TARGET_LINK_LIBRARIES
+ADD_EXECUTABLE
+LINK_DIRECTORIES
+INCLUDE_DIRECTORIES
+ADD_DEFINITIONS
+add_subdirectory
+AUX_SOURCE_DIRECTORY
+SET
+22、svn的一些简捷操作
+svn ci
+svn revert
+....
+23、/etc/init.d/cmserverd start
+cmserverd是一个shell脚本
+

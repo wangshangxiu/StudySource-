@@ -1,0 +1,21 @@
+{
+    "to":"eZvbgalHeeI:APA91bF3dffluSlJeFJ0ysLboaQaEPv2lv7EPhYL4QWSAPYW9-9QDxx7aUCH7A55m9Yj44eW-aCpx9Yz_NujdZVDvvu7MtebXGkYgyD-z2_nkx6f3psOldu3X0AUlNk67j2YNVYxZlBp",
+    "data":{
+      "Nick" : "Mario",
+      "body" : "great match!",
+      "Room" : "PortugalVSDenmark"
+    },
+    "priority" : "high",
+    "content_available" : true,
+    "message_id" : "af5f8d53f69044e1a6aee4a9810e64e6",
+    "notification" : {
+      "body" : "hello",
+      "title" : "MosantIM-iTest"
+   }
+
+}
+
+
+
+
+curl -X POST https://fcm.googleapis.com/fcm/send -H "authorization:key=AIzaSyBj1FIhdGqDh-1zjFhGARs2I2bP2AlL6ik" -H "Content-Type:application/json" -d "{"message":{"token":"eZvbgalHeeI:APA91bF3dffluSlJeFJ0ysLboaQaEPv2lv7EPhYL4QWSAPYW9-9QDxx7aUCH7A55m9Yj44eW-aCpx9Yz_NujdZVDvvu7MtebXGkYgyD-z2_nkx6f3psOldu3X0AUlNk67j2YNVYxZlBp","data":{"Nick" : "Mario","body" : "great match!","Room" : "PortugalVSDenmark"}}}" -v 

@@ -1,0 +1,95 @@
+57833:M 12 Sep 19:54:28.066 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:54:34.045 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:54:34.045 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:54:40.045 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:54:40.045 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:54:46.045 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:54:46.045 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:54:52.045 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:54:52.045 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:54:58.047 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:54:58.047 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:04.047 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:04.047 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:10.049 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:10.049 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:16.049 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:16.049 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:22.049 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:22.049 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:28.049 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:28.049 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:34.049 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:34.049 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:40.050 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:40.050 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:46.054 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:46.054 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:52.054 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:52.054 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:55:58.054 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:55:58.054 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:56:04.055 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:56:04.055 # Can't save in background: fork: Cannot allocate memory
+57833:M 12 Sep 19:56:10.060 * 100 changes in 300 seconds. Saving...
+57833:M 12 Sep 19:56:10.060 # Can't save in background: fork: Cannot allocate memory
+zsh: killed     ./src/redis-server (((CSDN blog:https://blog.csdn.net/zqz_zqz/article/details/53384854)
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# ll -lrt
+total 348412
+drwxr-xr-x+  8 thz  thz       4096 Aug  4 06:44 utils
+drwxr-xr-x+ 10 thz  thz       4096 Aug  4 06:44 tests
+-rw-r--r--+  1 thz  thz       7921 Aug  4 06:44 sentinel.conf
+-rwxr-xr-x+  1 thz  thz        281 Aug  4 06:44 runtest-sentinel
+-rwxr-xr-x+  1 thz  thz        280 Aug  4 06:44 runtest-cluster
+-rwxr-xr-x+  1 thz  thz        271 Aug  4 06:44 runtest
+-rw-r--r--+  1 thz  thz      58766 Aug  4 06:44 redis.conf
+-rw-r--r--+  1 thz  thz      20543 Aug  4 06:44 README.md
+-rw-r--r--+  1 thz  thz       4223 Aug  4 06:44 MANIFESTO
+-rw-r--r--+  1 thz  thz        151 Aug  4 06:44 Makefile
+-rw-r--r--+  1 thz  thz         11 Aug  4 06:44 INSTALL
+-rw-r--r--+  1 thz  thz       1487 Aug  4 06:44 COPYING
+-rw-r--r--+  1 thz  thz       1815 Aug  4 06:44 CONTRIBUTING
+-rw-r--r--+  1 thz  thz         53 Aug  4 06:44 BUGS
+-rw-r--r--+  1 thz  thz     164219 Aug  4 06:44 00-RELEASENOTES
+drwxr-xr-x+  6 thz  thz       4096 Aug 28 20:04 deps
+drwxr-xr-x+  3 thz  thz       8192 Aug 28 20:05 src
+-rw-rw-rw-+  1 root root         0 Aug 29 18:26 XCXC
+-rw-rw-rw-+  1 root root        41 Aug 29 18:26 0002bf20040ddddddddv]]]]]
+-rw-rw-rw-+  1 root root 356440316 Sep 12 19:28 dump.rdb
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# Can't save in background: fork: Cannot allocate memory
+quote> quit
+quote> 
+[root@localhost]/home/thz/SJ/hiredis/redis-stable# df -h
+Filesystem           Size  Used Avail Use% Mounted on
+/dev/mapper/cl-root   37G   26G   12G  70% /
+devtmpfs             897M     0  897M   0% /dev
+tmpfs                912M  492K  912M   1% /dev/shm
+tmpfs                912M   34M  879M   4% /run
+tmpfs                912M     0  912M   0% /sys/fs/cgroup
+/dev/sda1           1014M  175M  840M  18% /boot
+tmpfs                183M   24K  183M   1% /run/user/1000
+tmpfs                183M     0  183M   0% /run/user/0

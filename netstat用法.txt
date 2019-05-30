@@ -1,0 +1,28 @@
+﻿[root@localhost app_server]# netstat -tlnp (可以直接查看到创建了listen socket的服务有哪些）
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:3300            0.0.0.0:*               LISTEN      18152/./notify_serv 
+tcp        0      0 0.0.0.0:1800            0.0.0.0:*               LISTEN      21624/./cm_server   
+tcp        0      0 0.0.0.0:1900            0.0.0.0:*               LISTEN      18006/./msg_server  
+tcp        0      0 0.0.0.0:3600            0.0.0.0:*               LISTEN      21645/./desktop_ser 
+tcp        0      0 0.0.0.0:2100            0.0.0.0:*               LISTEN      21642/./ipush_serve 
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1105/sshd           
+tcp6       0      0 :::3400                 :::*                    LISTEN      18152/./notify_serv 
+tcp6       0      0 :::22                   :::*                    LISTEN      1105/sshd           
+[root@localhost app_server]# 
+
+[root@localhost app_server]# netstat -tlnpa | grep 18429[pid]  (查看某个pid进程有多少个连接)
+tcp        0      0 0.0.0.0:3200            0.0.0.0:*               LISTEN      18429/./login_serve 
+tcp        0      0 192.168.1.16:40698      192.168.1.46:2181       ESTABLISHED 18429/./login_serve 
+tcp        0      0 192.168.1.16:46842      192.168.1.97:19000      ESTABLISHED 18429/./login_serve 
+tcp        0      0 192.168.1.16:3200       192.168.1.16:44704      ESTABLISHED 18429/./login_serve 
+tcp        0      0 192.168.1.16:46826      192.168.1.97:19000      ESTABLISHED 18429/./login_serve 
+tcp        0      0 192.168.1.16:3200       192.168.1.16:44702      ESTABLISHED 18429/./login_serve 
+tcp        0      0 192.168.1.16:46872      192.168.1.97:19000      ESTABLISHED 18429/./login_serve 
+tcp        0      0 192.168.1.16:46864      192.168.1.97:19000      ESTABLISHED 18429/./login_serve 
+tcp        0      0 192.168.1.16:46824      192.168.1.97:19000      ESTABLISHED 18429/./login_serve 
+[root@localhost app_server]# netstat -tlnpa | grep 18429
+
+
+/etc/init.d/logind start (服务启动或者停止）
+/etc/init.d/logind stop 

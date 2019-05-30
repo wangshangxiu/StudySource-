@@ -1,0 +1,9 @@
+[root@azure-mysql2 ~]# netstat -tlpn
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:3506            0.0.0.0:*               LISTEN      111839/mysqld       
+tcp        0      0 0.0.0.0:60022           0.0.0.0:*               LISTEN      555/sshd            
+tcp        0      0 0.0.0.0:10050           0.0.0.0:*               LISTEN      19313/zabbix_agentd 
+tcp6       0      0 :::60022                :::*                    LISTEN      555/sshd            
+tcp6       0      0 :::10050                :::*                    LISTEN      19313/zabbix_agentd 
+[root@azure-mysql2 ~]# 

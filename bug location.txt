@@ -1,0 +1,116 @@
+1、void CClientLink::OnAssocSvrRegist(std::shared_ptr<CImPdu> pPdu) 200
+
+2、#8  0x00007fa0ddb70d00 in CClientLinkMgr::AddLinkByUserId (this=0x7afdd0, sUserId=..., pLink=0x18f500b0) at /home/thz/IM_release/base/clientlinkmgr.cpp:244
+3、邀请加群，前端申请加五个，但后台只能加三个（在限定的范围内，是否可以把成员加入群）
+4、Msg消息不回复
+5、2018-07-19 09:02:47,336 [INFO  IM] - <msghandle.cpp>|<250>|<OnMsgChat>,
+msgChat-230 (0xb001) b76f10822d914c7d8a66b1e5cccc78a2 prehandled , 1435657-->1435655, content Len 478, content = ..., use 27 usecond 
+2018-07-19 09:02:47,345 [DEBUG IM] - <msghandle.cpp>|<127>|<sendMsgChatAck>,****send MESChatAck(0xb002) b76f10822d914c7d8a66b1e5cccc78a2 to 1435657, code = 0X8000,time 1531962167345
+2018-07-19 09:02:47,346 [DEBUG IM] - <redisLoginInfoMgr.cpp>|<50>|<GetLoginInfo>,user 1435655 Login info ,status = 0, cmip = 172.31.29.196, cmport = 1800, devtype = 16, devtoken = 109ca7e9-7e8e-408e-a938-f7962cd7cb90:0862855031751823300001082400CN01, devvoipToken=
+2018-07-19 09:02:47,346 [DEBUG IM] - <msghandle.cpp>|<194>|<HandleMsgChatTask>,use 1435655:1435657 cfg setting,globalNointerupt:0, sessionNoInterupt:0, InHideModel:0, hideMsgSoundOn:0
+2018-07-19 09:02:47,346 [DEBUG IM] - <basehandle.cpp>|<150>|<sendPush>,****send request 0xd007 to andpush for use 1435657 to 1435655, devToken = 0862855031751823300001082400CN01, msgId = b76f10822d914c7d8a66b1e5cccc78a2, msgType = 1
+2018-07-19 09:02:47,346 [WARN  IM] - <serverlinkmgr.cpp>|<498>|<GetRandomLink>,There is no any valid link, so can not to allocate a link!
+2018-07-19 09:02:47,346 [ERROR IM] - <packet.cpp>|<235>|<SendPdu>,Err sending for the link is not exist or the link is not regist!
+2018-07-19 09:02:47,346 [WARN  IM] - <basehandle.cpp>|<84>|<sendReq>,!!!send command 0xd007 to svr 16 failed, return -1
+2018-07-19 09:02:47,346 [INFO  IM] - <msghandle.cpp>|<215>|<HandleMsgChatTask>,MsgChat b76f10822d914c7d8a66b1e5cccc78a2 finish,1010 right chked ,MESChatAck(0xb002)@8909, MESChatDeliver(0xb004)@0, push@ 10134
+6、MESOfflineMsgDeliveredNotifyAck(0xb019) 6fa2948c0add4e8e9638cee1134e6df6 prehandled,from 1435657, lsSize = 5
+2018-07-19 12:20:37,868 [DEBUG IM] - <serverlink.cpp>|<96>|<OnClose>,this link is closed by remoted host
+2018-07-19 12:20:41,475 [DEBUG IM] - <serverlink.cpp>|<37>|<Connect>,Connecting to associated server 172.31.7.87:2200 ...
+2018-07-19 12:20:41,476 [DEBUG IM] - <serverlink.cpp>|<96>|<OnClose>,this link is closed by remoted host
+2018-07-19 12:20:42,004 [DEBUG IM] - <zookeeper.cpp>|<100>|<Event>,zk child event: UpdateAssocSvr
+2018-07-19 12:20:48,784 [DEBUG IM] - <zookeeper.cpp>|<100>|<Event>,zk child event: UpdateAssocSvr
+2018-07-19 12:20:48,784 [DEBUG IM] - <zookeeper.cpp>|<331>|<RefreshAssocSvr>,The assoc svr info : node_172.31.7.87:0898
+2018-07-19 12:20:48,784 [DEBUG IM] - <serverlink.cpp>|<37>|<Connect>,Connecting to associated server 172.31.7.87:2200 ...
+2018-07-19 12:22:12,068 [DEBUG IM] - <serverlink.cpp>|<165>|<OnAssocSvrRegistAck>,regist to assoc svr 172.31.7.87:2200 successfully !
+2018-07-19 12:23:38,538 [INFO  IM] - <offLineMsgHandle.cpp>|<281>|<OnGetOfflineMsg>,
+7、apush程序在部分代码不注释的情况下，会一直在TCP栈上有堵住的数据，却不向上层提事件。现象如下。。。
+[root@ip-172-31-28-106 ipush]# netstat -alno | grep 2200
+tcp        2      0 172.31.28.106:2200      0.0.0.0:*               LISTEN      off (0.00/0/0)
+tcp        0      0 172.31.28.106:43972     172.31.28.106:2200      FIN_WAIT2   timewait (42.36/0/0)
+tcp       38      0 172.31.28.106:2200      172.31.29.114:36714     ESTABLISHED off (0.00/0/0)
+tcp        1      0 172.31.28.106:2200      172.31.28.106:43972     CLOSE_WAIT  off (0.00/0/0)
+8、mongos> db.offlineMsg.find({"cmdId":45172, "toId":"1213498", "bPulled":{$exists:0}})
+{ "_id" : ObjectId("5b62fdd1e1382395ec5a4840"), "msgId" : "09D0843447D84FF79283379AE672529B", "fromId" : "1005b62fdc822444a59b6ff4333", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533214161186"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b61344ae1382389cf105f41"), "msgId" : "0F3DEC49581E4040BE28A1B30B5AB7C0", "fromId" : "1005b605f81e5959e77c8cf54d9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533097033669"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626b85e1382358913cd6b3"), "msgId" : "19E5EAC751A244BE94D45C75F84D9E12", "fromId" : "1005b626ace35d9cfcf214e4333", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533176709080"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b613454e1382389cf105f42"), "msgId" : "2A6FA548D1ED42FD99F64F183DADA44D", "fromId" : "1005b605f81e5959e77c8cf54d9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533097042986"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b6128c5e1382389cf105f2c"), "msgId" : "398412117CBA4E648D6D8F25177C6BA6", "fromId" : "1005b605f81e5959e77c8cf54d9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533094085723"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626c05e1382358913cd6c5"), "msgId" : "52119509293E45FDB084A9E033B2C126", "fromId" : "1005b62685084c1d9947e9f4333", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533176837621"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626ac3e13823294c43fbaf"), "msgId" : "52473B70C6094BD3BB5F64978184BCB1", "fromId" : "1005b61b779cdb67e1e8299ede9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533176514984"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b612f49e1382389cf105f39"), "msgId" : "601DAB54AAD64690A4F6B21EBE292A71", "fromId" : "1005a66aec2f56978f65bb35cdc", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533095753172"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626c03e1382358913cd6c2"), "msgId" : "76B753FAC76C442C909A7BFF6FB801D1", "fromId" : "1005b62685084c1d9947e9f4333", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533176835168"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626bf4e1382358913cd6bc"), "msgId" : "7E2592632BA94B6880F235D660CF44A3", "fromId" : "1005b62685084c1d9947e9f4333", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533176820218"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626845e13823294c43fb9d"), "msgId" : "991CDA8E963B48C092365230F5539C68", "fromId" : "1005b61b779cdb67e1e8299ede9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533175865727"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b62683be13823294c43fb97"), "msgId" : "AFB2C97AF20E4045858725CB942AC347", "fromId" : "1005b61b779cdb67e1e8299ede9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533175857311"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626845e13823294c43fb9a"), "msgId" : "AFB2C97AF20E4045858725CB942AC347", "fromId" : "1005b61b779cdb67e1e8299ede9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533175857311"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626845e13823294c43fba0"), "msgId" : "AFB2C97AF20E4045858725CB942AC347", "fromId" : "1005b61b779cdb67e1e8299ede9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533175857311"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626bfae1382358913cd6bf"), "msgId" : "FC1C81FB531945FEB347820FA5256029", "fromId" : "1005b61b779cdb67e1e8299ede9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533176826301"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b626845e13823294c43fba3"), "msgId" : "FE285ED9E84E4B6C85A530F64854E898", "fromId" : "1005b61b779cdb67e1e8299ede9", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533175869759"), "isChatDeliver" : 1 }
+{ "_id" : ObjectId("5b62f9b8e1382394ef7ae03e"), "msgId" : "FFC3D5DBDA2C4DB1BC46A63A88A525A7", "fromId" : "1005a66aec2f56978f65bb35cdc", "toId" : "1213498", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533213111885"), "isChatDeliver" : 1 }
+mongos> 
+
+
+
+
+
+16:40:18,027 [INFO ] - <offLineMsgHandle.cpp>|<368>|<HandleGetOfflineMsg>,====befor fill group contents,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,027 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,027 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,027 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,028 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,028 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)D83D38950EBD480F88087FF13E5280E9 to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 3610921999 , get grp content at 3610922093, total use 3610922882 useconds
+16:40:18,016 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,030 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,031 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,031 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,031 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)CF25976DC0ED42EC898A2A9B22A81D3C to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 2427072475 , get grp content at 2427072932, total use 2427073589 useconds
+16:40:18,037 [INFO ] - <offLineMsgHandle.cpp>|<368>|<HandleGetOfflineMsg>,====befor fill group contents,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,037 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,037 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,037 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,038 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,038 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)D83D38950EBD480F88087FF13E5280E9 to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 3610931918 , get grp content at 3610931999, total use 3610932187 useconds
+16:40:18,040 [INFO ] - <offLineMsgHandle.cpp>|<368>|<HandleGetOfflineMsg>,====befor fill group contents,send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,040 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,040 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,041 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,041 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,041 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)CF25976DC0ED42EC898A2A9B22A81D3C to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 2427082788 , get grp content at 2427083042, total use 2427083552 useconds
+16:40:18,048 [INFO ] - <offLineMsgHandle.cpp>|<368>|<HandleGetOfflineMsg>,====befor fill group contents,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,049 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,049 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,049 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,050 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,050 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)D83D38950EBD480F88087FF13E5280E9 to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 3610943801 , get grp content at 3610944047, total use 3610944536 useconds
+16:40:18,051 [INFO ] - <offLineMsgHandle.cpp>|<368>|<HandleGetOfflineMsg>,====befor fill group contents,send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,052 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,052 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,052 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,052 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,052 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)CF25976DC0ED42EC898A2A9B22A81D3C to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 2427093950 , get grp content at 2427094030, total use 2427094426 useconds
+16:40:18,060 [INFO ] - <offLineMsgHandle.cpp>|<368>|<HandleGetOfflineMsg>,====befor fill group contents,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,061 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,061 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,061 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,061 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,061 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)D83D38950EBD480F88087FF13E5280E9 to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 3610955228 , get grp content at 3610955374, total use 3610956002 useconds
+16:40:18,062 [INFO ] - <offLineMsgHandle.cpp>|<368>|<HandleGetOfflineMsg>,====befor fill group contents,send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,062 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,062 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,062 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,063 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,063 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)CF25976DC0ED42EC898A2A9B22A81D3C to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 2427104435 , get grp content at 2427104502, total use 2427105168 useconds
+16:40:18,070 [INFO ] - <offLineMsgHandle.cpp>|<368>|<HandleGetOfflineMsg>,====befor fill group contents,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,070 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,070 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,070 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,071 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 32, sum=34, to=1100028
+16:40:18,071 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)D83D38950EBD480F88087FF13E5280E9 to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 3610964793 , get grp content at 3610965033, total use 3610965769 useconds
+16:40:18,074 [INFO ] - <offLineMsgHandle.cpp>|<368>|<HandleGetOfflineMsg>,====befor fill group contents,send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,074 [INFO ] - <offLineMsgHandle.cpp>|<369>|<HandleGetOfflineMsg>,--------GetUserOfflineMsg befor fill group contents, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,074 [INFO ] - <offLineMsgHandle.cpp>|<375>|<HandleGetOfflineMsg>,====after fill GetContentForGrpOfflineMsg,send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,074 [INFO ] - <offLineMsgHandle.cpp>|<376>|<HandleGetOfflineMsg>,--------after fill GetContentForGrpOfflineMsg, offlineMsgAck.size = 0, offlineMsgAckByteSize = 13
+16:40:18,074 [INFO ] - <offLineMsgHandle.cpp>|<385>|<HandleGetOfflineMsg>,====send offlineMsg type = 45172, remain = 2, skiprow= 30, sum=32, to=1100028
+16:40:18,074 [INFO ] - <offLineMsgHandle.cpp>|<387>|<HandleGetOfflineMsg>,****send MESOfflineMsgAck(0xb016)CF25976DC0ED42EC898A2A9B22A81D3C to 1100028,lsSize = 0, offlineMsgAckByteSize = 56, getofflinemsg at 2427116164 , get grp content at 2427116218, total use 2427116667 useconds
+Segmentation fault (core dumped)
+[root@localhost msg]# ll -lrt

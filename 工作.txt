@@ -1,0 +1,21 @@
+1、开发环境在本地1.93的虚拟机/home/thz目录中（可自己更改），
+虚拟机文件目录D:\Virtual Machines\CentOS 64 位_basic，
+用vmware打开即可，虚拟机系统所有用户账号的密码都是123456
+
+2、内网测试环境在1.99上面，账号root,密码可以找cain.服务的部署目录在/home/tony/im
+
+//编译说明
+1、从svn://192.168.1.128/dev-env/Server/src拉取工程文件后(当前在1.93的虚拟机/home/thz/IM目录下)，
+	进入lib目录，执行createLink.sh脚本创建库的软连接
+2、编译msg,进入msg下的build目录，执行cmake ..指令，然后make
+3、cm,group,ipush,apush,customerService的编译类似
+
+4、自己初步调试通过后，更新到svn://192.168.1.128/dev-env/Server/deployment的相应目录下，
+
+
+
+= =  == = = = = == 
+aws 的pushseverIP
+13.229.102.192
+aws的msgserverIP
+54.254.137.223

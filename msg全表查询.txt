@@ -1,0 +1,36 @@
+在mongo只有一张表保存消息，离线用状态标志的话，全表查询的思路
+
+1、求总的
+mongos> db.offlineMsg.aggregate([{$match:{"toId" : "1387018","cmdId":45172}}, {$group:{_id:null, sum:{$sum:1}}}])
+{ "_id" : null, "sum" : 488 }
+
+
+2、已经拉过的
+mongos> db.offlineMsg.aggregate([{$match:{"toId" : "1387018","cmdId":45172, "bPulled":{$gt:0}}}, {$group:{_id:null, sum:{$sum:1}}}])
+{ "_id" : null, "sum" : 20 }
+
+（这个地方要对上两个步骤的结果做一个差集，保存最被有哪些离线及离线数和开始偏移数）
+
+3、得到一开始的偏移 skip = 20， 真正的离线 sum = remain = 488-20 = 468;
+mongos> db.offlineMsg.aggregate([{$match:{"toId" : "1387018","cmdId":45172}}, {$sort:{"bPulled":-1, "fromId":-1,"createTime":-1}}, {$skip:(20)}, {$limit:(10)}])
+{ "_id" : ObjectId("5b62793fe138235de1623763"), "msgId" : "7ed98a2ab26449b3bf14fc92f02feffe", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533180224269"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627908e138235de1623754"), "msgId" : "b32d4b51085c4863a86fafed729bae3d", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179938314"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627907e138235de1623751"), "msgId" : "aecc2a760c184e45bf4ff6f17ed928b5", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179882628"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627907e138235de162374e"), "msgId" : "7fd17a920610411aa9e983df968fd447", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179880274"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627908e138235de162375f"), "msgId" : "b3da5c3e9f234c5c859174c479f70f3b", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179872566"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627903e138235de1623748"), "msgId" : "35ecd72502314464a1a6db84b5c15d07", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179865531"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627908e138235de1623759"), "msgId" : "b352c20cb9104456b2ffc485acb1f557", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179863231"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627908e138235de162375c"), "msgId" : "f736e9b086c7490fadd27def868a9190", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179829983"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b3ec626e1382334a32c4301"), "msgId" : "aecb81ed3dfb4d05aef1065f554916dd", "fromId" : "1005b3dd8cfce834dc47ff9b5a7", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1530840614644"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b3ec622e1382334a32c42dc"), "msgId" : "9eda260549fb47bdabc768e4cb452290", "fromId" : "1005b3dd8cfce834dc47ff9b5a7", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1530840610537"), "isChatDeliver" : 1, "bPulled" : 0 }
+
+4、可以得知上次会有多少条已经被发送出去，比如1条， 从而更新skip = 20+1, remian = 468 -1 = 465, sum = 468;
+mongos> db.offlineMsg.aggregate([{$match:{"toId" : "1387018","cmdId":45172}}, {$sort:{"bPulled":-1, "fromId":-1,"createTime":-1}}, {$skip:(21)}, {$limit:(10)}])
+{ "_id" : ObjectId("5b627908e138235de1623754"), "msgId" : "b32d4b51085c4863a86fafed729bae3d", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179938314"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627907e138235de1623751"), "msgId" : "aecc2a760c184e45bf4ff6f17ed928b5", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179882628"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627907e138235de162374e"), "msgId" : "7fd17a920610411aa9e983df968fd447", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179880274"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627908e138235de162375f"), "msgId" : "b3da5c3e9f234c5c859174c479f70f3b", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179872566"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627903e138235de1623748"), "msgId" : "35ecd72502314464a1a6db84b5c15d07", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179865531"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627908e138235de1623759"), "msgId" : "b352c20cb9104456b2ffc485acb1f557", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179863231"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b627908e138235de162375c"), "msgId" : "f736e9b086c7490fadd27def868a9190", "fromId" : "1005b62763f605e02e0db974333", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1533179829983"), "isChatDeliver" : 1, "bPulled" : 0 }
+{ "_id" : ObjectId("5b3ec626e1382334a32c4301"), "msgId" : "aecb81ed3dfb4d05aef1065f554916dd", "fromId" : "1005b3dd8cfce834dc47ff9b5a7", "toId" : "1387018", "cmdId" : 45172, "msgData" : "", "createTime" : NumberLong("1530840614644"), "isChatDeliver" : 1, "bPulled" : 0 }

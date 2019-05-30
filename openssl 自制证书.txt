@@ -1,0 +1,146 @@
+[root@rabbitmq222 base]# mkdir testopenssl
+[root@rabbitmq222 base]# cd testopenssl/
+[root@rabbitmq222 testopenssl]# open
+open                   openlmi-doc-class2rst  openlmi-doc-class2uml  openlmi-mof-register   openoffice.org         openssl                openvt                 
+[root@rabbitmq222 testopenssl]# open
+open                   openlmi-doc-class2rst  openlmi-doc-class2uml  openlmi-mof-register   openoffice.org         openssl                openvt                 
+[root@rabbitmq222 testopenssl]# openssl genrsa -out ca/ca-key.pem 1024
+ca/ca-key.pem: No such file or directory
+140517197985680:error:02001002:system library:fopen:No such file or directory:bss_file.c:402:fopen('ca/ca-key.pem','w')
+140517197985680:error:20074002:BIO routines:FILE_CTRL:system lib:bss_file.c:404:
+[root@rabbitmq222 testopenssl]# mkdir ca
+[root@rabbitmq222 testopenssl]# openssl genrsa -out ca/ca-key.pem 1024
+Generating RSA private key, 1024 bit long modulus
+............++++++
+..........................++++++
+e is 65537 (0x10001)
+[root@rabbitmq222 testopenssl]# openssl  req -new -out ca/ca-req.csr -key ca/ca-key.pem 
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [XX]:cn
+State or Province Name (full name) []:guangdong  
+Locality Name (eg, city) [Default City]:shen^Z       
+[1]+  Stopped                 openssl req -new -out ca/ca-req.csr -key ca/ca-key.pem
+[root@rabbitmq222 testopenssl]# openssl  req -new -out ca/ca-req.csr -key ca/ca-key.pem 
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [XX]:cn
+State or Province Name (full name) []:guangdong
+Locality Name (eg, city) [Default City]:shenzheng
+Organization Name (eg, company) [Default Company Ltd]:szyq
+Organizational Unit Name (eg, section) []:development
+Common Name (eg, your name or your server's hostname) []:root@rabbitmq222
+Email Address []:894616049@qq.com
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:123456
+An optional company name []:
+[root@rabbitmq222 testopenssl]# openssl x509 -req -in ca/ca-req.csr -out ca/ca-cert.pem -signkey ca/ca-key.pem -days 3650
+Signature ok
+subject=/C=cn/ST=guangdong/L=shenzheng/O=szyq/OU=development/CN=root@rabbitmq222/emailAddress=894616049@qq.com
+Getting Private key
+[root@rabbitmq222 testopenssl]# ll  -lrt
+total 0
+drwxrwxrwx+ 2 root root 61 Jan 31 17:50 ca
+[root@rabbitmq222 testopenssl]# ll ca
+total 12
+-rw-rw-rw-+ 1 root root 977 Jan 31 17:50 ca-cert.pem
+-rw-rw-rw-+ 1 root root 891 Jan 31 17:41 ca-key.pem
+-rw-rw-rw-+ 1 root root 745 Jan 31 17:48 ca-req.csr
+[root@rabbitmq222 testopenssl]# op
+opannotate             op-check-perfevents    open                   openlmi-doc-class2uml  openoffice.org         openvt                 opgprof                opimport               opreport               
+oparchive              opcontrol              openlmi-doc-class2rst  openlmi-mof-register   openssl                operf                  ophelp                 opjitconv              oprofiled              
+[root@rabbitmq222 testopenssl]# openssl pkcs12 -export -clcerts -in ca/ca-cert.pem  -inkey ca/ca-key.pem -out ca/ca.p12
+Enter Export Password:
+Verifying - Enter Export Password:
+[root@rabbitmq222 testopenssl]# ll ca
+total 16
+-rw-rw-rw-+ 1 root root  977 Jan 31 17:50 ca-cert.pem
+-rw-rw-rw-+ 1 root root  891 Jan 31 17:41 ca-key.pem
+-rw-rw-rw-+ 1 root root 1701 Jan 31 17:54 ca.p12
+-rw-rw-rw-+ 1 root root  745 Jan 31 17:48 ca-req.csr
+[root@rabbitmq222 testopenssl]# cat ca/ca*
+-----BEGIN CERTIFICATE-----
+MIICpTCCAg4CCQCYlP1J5fuR6TANBgkqhkiG9w0BAQsFADCBljELMAkGA1UEBhMC
+Y24xEjAQBgNVBAgMCWd1YW5nZG9uZzESMBAGA1UEBwwJc2hlbnpoZW5nMQ0wCwYD
+VQQKDARzenlxMRQwEgYDVQQLDAtkZXZlbG9wbWVudDEZMBcGA1UEAwwQcm9vdEBy
+YWJiaXRtcTIyMjEfMB0GCSqGSIb3DQEJARYQODk0NjE2MDQ5QHFxLmNvbTAeFw0x
+OTAxMzEwOTUwMDVaFw0yOTAxMjgwOTUwMDVaMIGWMQswCQYDVQQGEwJjbjESMBAG
+A1UECAwJZ3Vhbmdkb25nMRIwEAYDVQQHDAlzaGVuemhlbmcxDTALBgNVBAoMBHN6
+eXExFDASBgNVBAsMC2RldmVsb3BtZW50MRkwFwYDVQQDDBByb290QHJhYmJpdG1x
+MjIyMR8wHQYJKoZIhvcNAQkBFhA4OTQ2MTYwNDlAcXEuY29tMIGfMA0GCSqGSIb3
+DQEBAQUAA4GNADCBiQKBgQCrxuLxgLfH6CZY+YY/V9Et9B4hTQsFxsDWjuERocSd
+LWjoaRYosD6GwDLrgyuK35AwK193HZimRUWaHDx5ayAevYjWcV6gSLtXuo3xxwl1
+8RXyu1fWBa/AAG6VRqUv5hyOH5TMQlHXt54WnS4GzZ4byqBp9Tf4H8VlVuYTF1h4
+ZwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAIto71fHJrb1VHwS9BwHJy38a9U9XqXM
+2x2GEIvfZnDConQvsImYTKL16Ulhdrg2p3C6WvyxY+Pt329ucuUh051emQzVow9K
+fnDkugWBaxdw1TWyHuT3ssKpMkBcJSlR7TfigysdVqiUmXWhW84Q3Ezcg7d4w+TD
+gv0eFdODBK0p
+-----END CERTIFICATE-----
+-----BEGIN RSA PRIVATE KEY-----
+MIICXgIBAAKBgQCrxuLxgLfH6CZY+YY/V9Et9B4hTQsFxsDWjuERocSdLWjoaRYo
+sD6GwDLrgyuK35AwK193HZimRUWaHDx5ayAevYjWcV6gSLtXuo3xxwl18RXyu1fW
+Ba/AAG6VRqUv5hyOH5TMQlHXt54WnS4GzZ4byqBp9Tf4H8VlVuYTF1h4ZwIDAQAB
+AoGAUnbKYDHxCHE0Z6ZyglpAO5VkGYyI7B78WISDHBnS77nrERfR4Xqqqbn/N/zi
+nGqzJ8zKqb51l+zNeyxvA8MfyZgZpoapnmCAhto5Lt3wzIWspC6ycM4X+FReXzsN
+cEsvFWuwW3g82JiKeVEe6PJKom6cV32511tkPxSXUqsI/SECQQDkFvjtSJWnkHGn
+27kANE9QpZqliWPQmu91h/kaCXkZ06y1TEudtvr/hLEUaebE7a7wNTIy+Lk7XM/1
+c75HUwGpAkEAwMviwOY8zNKBetSl2Xf26J57HIGOsrUKgaKryQp6PSWtAgUi+8va
+7xyOCuNSMhe1NjY/FNMhn0w7JyrlbuMTjwJBAIXV8PSSjbXH7NjY9cHn785bjdWq
+O1ZxQycMxR8BBf0glou/G/OMJdV+z8UxqsZMzUSHglAkX9Q0TpYw9yq0yxkCQQC2
+UhklgpWMvKVlmyMb/K6qXPTfiEWCCmLdJRB/FkFzAeYSOvlSVP29kath8IcSiAj+
+M16EOwVYt6ZY69/8dRFRAkEAmBX7cxVJoURt5EBeVt65UN+kgv5Ia8qDtkji9UQ9
+kIa3Qr5PORnysbaNcEH36i40rebeqZwdGgYt2UIxr8kCIw==
+-----END RSA PRIVATE KEY-----
+0@0<05O *H 
+*H 
+±(-v
+    LϝʶџM诧ټפ>akc񰨝<u8h񭒁񻽆#ʽI󏢢"橆1𹣔կT®r½¸¾򷈗;K 
+                                              ֋¦^
+vB¾R&𸯿IȐ𺹴ˬZ!&¹#϶񼳖pÿ𘷦4|ڮµ#/¾´a¨H)j`Za󨭼p񰸜<=X d|J͐ 
+                                              ͝䠍]«gS:³y9Ɍ»]p?ª{`ªӼF ¬˘ÿ«w(¾Ҭ¡6=¡©¢¸-󱉽겋1ʐ®󚫶½ 
+Y1=U°Ԑ萳^9|鏂q@່ٙ7󿿐¼៾⺺Wܦٻ'#¹偸C
+h̜򿤱c	r'ÿ¹￡ӹ´5ė󆼭¥¥®¬66Gؕ¡µSШ$£u4酰S'񥒇1I0¥沄·
+                                               󡏔¯¸ª3bQeۏ~Nc3T°¦獮¸񰋞§· װڙº󵟴׳¾b|ݘϧɼ󹍷ѯ`S·o撵󿤀J§ήХ°¢c֧gβ¤t5[jX³ךÿ갚
+O̜ɠ¸®Gk£=򇻹=
+񩨐G늳'aRႩsP`ؙʹd!±d5H Ϣחŷ¿´򢏩}mdQ7
+ 脂䰂ం܆                   ºߺ/|疒Ȑ1q8½ÿ^򭟎U$x𱠙ƈ¦rJ#¸o!R~͟ݰ	*H 
+       *H 
+
+ ¦0¢0 
+*H 
+Ⱎu`uح¢s(X.WSR.Q1a󰱴£2h퐮򘤟݃%+˾·y²֢m󎝦.
+                                  󬎖𫍹K迯Э 
+澈ܱ〈󿿝Ze
+      {Id\ɇAجǗNʑ¯H1½ņu­خ󘘸Ҥw؉󓸔¤ՋSJȲ܇RJ
+                                      lӷ즘f˧ɩ滁¶錈ᮅe2ץvF볇þ¸¡ו;𶇻»©%¼˴r6¸,A8¹Z¡̻LY⏻󤁯¶§¤{͔ܵu󄢶.羃󦌋²7@+f림왙񣼅G8󿾥rʓ򲬾
+ׁµ㌓e¨R  쪶}d磣˼㛬שAԥa¨u_        Lɮ΋0zʥ«7U¶BLW^}ٿ`󼐔󍔗                                                        ׅ/1¶§þ¢*X散¼zª󿧞x­ٶ¼­𙩒&؍曧E 
+¯L~N^c°kj³µ©Nu推Cզ##ۙ5/^󩫻r¬YCQżղ/þ뤒؁Kµ9/򆹅½uŖ?n´²ٝJ¯r&擧-d®b72uЏ⥢1H0W*¨痖=²ڟ{Z2i!綏뤸񌺏怋6
+        1r򸱜j&񆠺º㷍i010!0       +`h¦þIL⭤L[<-----BEGIN CERTIFICATE REQUEST-----        󍰎_}+xZ}񥙒骝.s£v1%0#	*H 
+MIIB7jCCAVcCAQAwgZYxCzAJBgNVBAYTAmNuMRIwEAYDVQQIDAlndWFuZ2Rvbmcx
+EjAQBgNVBAcMCXNoZW56aGVuZzENMAsGA1UECgwEc3p5cTEUMBIGA1UECwwLZGV2
+ZWxvcG1lbnQxGTAXBgNVBAMMEHJvb3RAcmFiYml0bXEyMjIxHzAdBgkqhkiG9w0B
+CQEWEDg5NDYxNjA0OUBxcS5jb20wgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGB
+AKvG4vGAt8foJlj5hj9X0S30HiFNCwXGwNaO4RGhxJ0taOhpFiiwPobAMuuDK4rf
+kDArX3cdmKZFRZocPHlrIB69iNZxXqBIu1e6jfHHCXXxFfK7V9YFr8AAbpVGpS/m
+HI4flMxCUde3nhadLgbNnhvKoGn1N/gfxWVW5hMXWHhnAgMBAAGgFzAVBgkqhkiG
+9w0BCQcxCAwGMTIzNDU2MA0GCSqGSIb3DQEBCwUAA4GBACGSlEG2YlgOO21dHAod
+jwsBDE7DlqHEnu8KdHyyulZkf4ChWOi06SoQsx5kbV+lyfi3+VvuQwuzF4tNojm/
+xAxigDlS0pdZu4jKanfJkytQJXUmdbflcHGidi1rNVa78kQ2Kuc+vzipqfJj02ua
+FIhZ+Oq8i46GqcuwO6pUl3dB
+-----END CERTIFICATE REQUEST-----
+
+
+C:\OpenSSL\bin>openssl x509 -req -in server/server-req.csr -out server/server-cert4.pem -signkey server/server-key.pem -CA ca/ca-cert.pem -CAkey ca/ca-key.pem -CAcreateserial -days 3650 
+

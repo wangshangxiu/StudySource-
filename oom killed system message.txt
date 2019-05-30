@@ -1,0 +1,204 @@
+  3578	Sep 12 14:04:18 localhost kernel: byteorder[50918]: segfault at 7fff12345678 ip 0000000000400661 sp 00007fff46a10d40 error 4 in byteorder[400000+1000]
+  3584	Sep 12 14:07:12 localhost kernel: byteorder[50995]: segfault at 7ffd12345678 ip 00000000004006a3 sp 00007ffd9b7d1540 error 4 in byteorder[400000+1000]
+  3589	Sep 12 14:08:16 localhost kernel: byteorder[51056]: segfault at 7ffd12345678 ip 00000000004006a3 sp 00007ffd3477a0b0 error 4 in byteorder[400000+1000]
+  3594	Sep 12 14:09:32 localhost kernel: byteorder[51119]: segfault at 7ffe12345678 ip 00000000004006ae sp 00007ffe2377caf0 error 4 in byteorder[400000+1000]
+  3801	Sep 12 18:33:15 localhost kernel: device ens33 entered promiscuous mode
+  3802	Sep 12 18:33:15 localhost kernel: device ens33 left promiscuous mode
+  3803	Sep 12 18:33:20 localhost kernel: device ens33 entered promiscuous mode
+  3804	Sep 12 18:34:08 localhost kernel: device ens33 left promiscuous mode
+  3805	Sep 12 18:34:20 localhost kernel: device ens33 entered promiscuous mode
+  3806	Sep 12 18:34:36 localhost kernel: device ens33 left promiscuous mode
+  3807	Sep 12 18:34:50 localhost kernel: device ens33 entered promiscuous mode
+  3808	Sep 12 18:35:09 localhost kernel: device ens33 left promiscuous mode
+  3809	Sep 12 18:35:15 localhost kernel: device lo entered promiscuous mode
+  3810	Sep 12 18:35:17 localhost kernel: device lo left promiscuous mode
+  3811	Sep 12 18:35:20 localhost kernel: device lo entered promiscuous mode
+  3812	Sep 12 18:35:24 localhost kernel: device lo left promiscuous mode
+  3813	Sep 12 18:36:17 localhost kernel: device ens33 entered promiscuous mode
+  3814	Sep 12 18:36:17 localhost kernel: device ens33 left promiscuous mode
+  3815	Sep 12 18:36:19 localhost kernel: device lo entered promiscuous mode
+  3816	Sep 12 18:36:21 localhost kernel: device lo left promiscuous mode
+  3817	Sep 12 18:36:41 localhost kernel: device lo entered promiscuous mode
+  3818	Sep 12 18:36:45 localhost kernel: device lo left promiscuous mode
+  3847	Sep 12 19:24:21 localhost kernel: device lo entered promiscuous mode
+  3848	Sep 12 19:24:25 localhost kernel: device lo left promiscuous mode
+  3879	Sep 12 19:57:35 localhost kernel: redis-server invoked oom-killer: gfp_mask=0x280da, order=0, oom_score_adj=0
+  3880	Sep 12 19:57:35 localhost kernel: redis-server cpuset=/ mems_allowed=0
+  3881	Sep 12 19:57:35 localhost kernel: CPU: 0 PID: 57833 Comm: redis-server Not tainted 3.10.0-514.el7.x86_64 #1
+  3882	Sep 12 19:57:35 localhost kernel: Hardware name: VMware, Inc. VMware Virtual Platform/440BX Desktop Reference Platform, BIOS 6.00 07/02/2015
+  3883	Sep 12 19:57:35 localhost kernel: ffff88004f5e6dd0 00000000e3ba3b3d ffff880027933a78 ffffffff81685fac
+  3884	Sep 12 19:57:35 localhost kernel: ffff880027933b08 ffffffff81680f57 ffffffff810eaa6c ffff8800749794b0
+  3885	Sep 12 19:57:35 localhost kernel: ffff8800749794c8 0000000000000206 ffff88004f5e6dd0 ffff880027933af8
+  3886	Sep 12 19:57:35 localhost kernel: Call Trace:
+  3887	Sep 12 19:57:35 localhost kernel: [<ffffffff81685fac>] dump_stack+0x19/0x1b
+  3888	Sep 12 19:57:35 localhost kernel: [<ffffffff81680f57>] dump_header+0x8e/0x225
+  3889	Sep 12 19:57:35 localhost kernel: [<ffffffff810eaa6c>] ? ktime_get_ts64+0x4c/0xf0
+  3890	Sep 12 19:57:36 localhost kernel: [<ffffffff8113cb5f>] ? delayacct_end+0x8f/0xb0
+  3891	Sep 12 19:57:36 localhost kernel: [<ffffffff8118460e>] oom_kill_process+0x24e/0x3c0
+  3892	Sep 12 19:57:36 localhost kernel: [<ffffffff811840ad>] ? oom_unkillable_task+0xcd/0x120
+  3893	Sep 12 19:57:36 localhost kernel: [<ffffffff81184156>] ? find_lock_task_mm+0x56/0xc0
+  3894	Sep 12 19:57:36 localhost kernel: [<ffffffff810936ce>] ? has_capability_noaudit+0x1e/0x30
+  3895	Sep 12 19:57:36 localhost kernel: [<ffffffff81184e46>] out_of_memory+0x4b6/0x4f0
+  3896	Sep 12 19:57:36 localhost kernel: [<ffffffff81681a60>] __alloc_pages_slowpath+0x5d7/0x725
+  3897	Sep 12 19:57:36 localhost kernel: [<ffffffff8118af55>] __alloc_pages_nodemask+0x405/0x420
+  3898	Sep 12 19:57:36 localhost kernel: [<ffffffff811d20ba>] alloc_pages_vma+0x9a/0x150
+  3899	Sep 12 19:57:36 localhost kernel: [<ffffffff811b137f>] handle_mm_fault+0xc6f/0xfe0
+  3900	Sep 12 19:57:36 localhost kernel: [<ffffffff81691a94>] __do_page_fault+0x154/0x450
+  3901	Sep 12 19:57:36 localhost kernel: [<ffffffff81691dc5>] do_page_fault+0x35/0x90
+  3902	Sep 12 19:57:36 localhost kernel: [<ffffffff8168e088>] page_fault+0x28/0x30
+  3903	Sep 12 19:57:36 localhost kernel: Mem-Info:
+  3904	Sep 12 19:57:36 localhost kernel: active_anon:301097 inactive_anon:101574 isolated_anon:0#012 active_file:84 inactive_file:435 isolated_file:28#012 unevictable:0 dirty:0 writeback:0 unstable:0#012 slab_reclaimable:9251 slab_unreclaimable:13425#012 mapped:70 shmem:41 pagetables:10429 bounce:0#012 free:14435 free_pcp:23 free_cma:0
+  3905	Sep 12 19:57:36 localhost kernel: Node 0 DMA free:7620kB min:384kB low:480kB high:576kB active_anon:1744kB inactive_anon:5412kB active_file:0kB inactive_file:40kB unevictable:0kB isolated(anon):0kB isolated(file):0kB present:15988kB managed:15904kB mlocked:0kB dirty:0kB writeback:0kB mapped:4kB shmem:0kB slab_reclaimable:144kB slab_unreclaimable:644kB kernel_stack:64kB pagetables:152kB unstable:0kB bounce:0kB free_pcp:0kB local_pcp:0kB free_cma:0kB writeback_tmp:0kB pages_scanned:3 all_unreclaimable? no
+  3906	Sep 12 19:57:36 localhost kernel: lowmem_reserve[]: 0 1806 1806 1806
+  3907	Sep 12 19:57:36 localhost kernel: Node 0 DMA32 free:50120kB min:44668kB low:55832kB high:67000kB active_anon:1202644kB inactive_anon:400884kB active_file:336kB inactive_file:1700kB unevictable:0kB isolated(anon):0kB isolated(file):112kB present:2080640kB managed:1851388kB mlocked:0kB dirty:0kB writeback:0kB mapped:276kB shmem:164kB slab_reclaimable:36860kB slab_unreclaimable:53056kB kernel_stack:8864kB pagetables:41564kB unstable:0kB bounce:0kB free_pcp:92kB local_pcp:0kB free_cma:0kB writeback_tmp:0kB pages_scanned:28 all_unreclaimable? no
+  3908	Sep 12 19:57:36 localhost kernel: lowmem_reserve[]: 0 0 0 0
+  3909	Sep 12 19:57:36 localhost kernel: Node 0 DMA: 11*4kB (UM) 11*8kB (UEM) 7*16kB (UEM) 12*32kB (UEM) 6*64kB (UEM) 8*128kB (UEM) 6*256kB (UEM) 2*512kB (UM) 1*1024kB (E) 1*2048kB (M) 0*4096kB = 7668kB
+  3910	Sep 12 19:57:36 localhost kernel: Node 0 DMA32: 1404*4kB (UEM) 1159*8kB (UEM) 677*16kB (UEM) 310*32kB (UEM) 103*64kB (UEM) 44*128kB (UE) 5*256kB (UM) 2*512kB (M) 0*1024kB 0*2048kB 0*4096kB = 50168kB
+  3911	Sep 12 19:57:36 localhost kernel: Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=1048576kB
+  3912	Sep 12 19:57:36 localhost kernel: Node 0 hugepages_total=0 hugepages_free=0 hugepages_surp=0 hugepages_size=2048kB
+  3913	Sep 12 19:57:36 localhost kernel: 818 total pagecache pages
+  3914	Sep 12 19:57:36 localhost kernel: 238 pages in swap cache
+  3915	Sep 12 19:57:36 localhost kernel: Swap cache stats: add 799363, delete 799125, find 1623374/1643070
+  3916	Sep 12 19:57:36 localhost kernel: Free swap  = 0kB
+  3917	Sep 12 19:57:36 localhost kernel: Total swap = 2097148kB
+  3918	Sep 12 19:57:36 localhost kernel: 524157 pages RAM
+  3919	Sep 12 19:57:36 localhost kernel: 0 pages HighMem/MovableOnly
+  3920	Sep 12 19:57:36 localhost kernel: 57334 pages reserved
+  3921	Sep 12 19:57:36 localhost kernel: [ pid ]   uid  tgid total_vm      rss nr_ptes swapents oom_score_adj name
+  3922	Sep 12 19:57:36 localhost kernel: [  490]     0   490     9237        1      22       88             0 systemd-journal
+  3923	Sep 12 19:57:36 localhost kernel: [  514]     0   514    48162        0      29      106             0 lvmetad
+  3924	Sep 12 19:57:36 localhost kernel: [  528]     0   528    11135        2      22      346         -1000 systemd-udevd
+  3925	Sep 12 19:57:36 localhost kernel: [  794]     0   794    13858        2      28      110         -1000 auditd
+  3926	Sep 12 19:57:36 localhost kernel: [  810]     0   810    31974        1      18      124             0 smartd
+  3927	Sep 12 19:57:36 localhost kernel: [  811]     0   811     6069        1      14       85             0 systemd-logind
+  3928	Sep 12 19:57:36 localhost kernel: [  812]     0   812     4832       32      13       42             0 irqbalance
+  3929	Sep 12 19:57:36 localhost kernel: [  815]     0   815    21126        6      10       53             0 audispd
+  3930	Sep 12 19:57:36 localhost kernel: [  816]     0   816    50307       10      36      113             0 gssproxy
+  3931	Sep 12 19:57:36 localhost kernel: [  818]     0   818     6008        2      17       48             0 sedispatch
+  3932	Sep 12 19:57:36 localhost kernel: [  821]     0   821    76450      112      59      955             0 vmtoolsd
+  3933	Sep 12 19:57:36 localhost kernel: [  822]    81   822     7090       25      18      486          -900 dbus-daemon
+  3934	Sep 12 19:57:36 localhost kernel: [  847]     0   847    86403       19      69      325             0 ModemManager
+  3935	Sep 12 19:57:36 localhost kernel: [  848]   994   848     2134        1       9       37             0 lsmd
+  3936	Sep 12 19:57:36 localhost kernel: [  849]     0   849    96931       88      44      240             0 accounts-daemon
+  3937	Sep 12 19:57:36 localhost kernel: [  850]     0   850     4211        2      13       56             0 alsactl
+  3938	Sep 12 19:57:36 localhost kernel: [  852]     0   852    53192        2      53      444             0 abrtd
+  3939	Sep 12 19:57:36 localhost kernel: [  854]     0   854    52572        2      53      337             0 abrt-watch-log
+  3940	Sep 12 19:57:36 localhost kernel: [  865]     0   865    52572       10      53      328             0 abrt-watch-log
+  3941	Sep 12 19:57:36 localhost kernel: [  866]     0   866     1095       23       8       16             0 rngd
+  3942	Sep 12 19:57:36 localhost kernel: [  870]   172   870    41165        9      16       49             0 rtkit-daemon
+  3943	Sep 12 19:57:36 localhost kernel: [  874]   997   874   134812      580      59     3710             0 polkitd
+  3944	Sep 12 19:57:36 localhost kernel: [  875]    70   875     7673      117      19      106             0 avahi-daemon
+  3945	Sep 12 19:57:36 localhost kernel: [  879]   384   879    28966        2      28       95             0 chronyd
+  3946	Sep 12 19:57:36 localhost kernel: [  892]    70   892     7519        6      18       55             0 avahi-daemon
+  3947	Sep 12 19:57:36 localhost kernel: [  900]     0   900    28881       90      11       29             0 ksmtuned
+  3948	Sep 12 19:57:36 localhost kernel: [  907]     0   907     1642        1       6       38             0 mcelog
+  3949	Sep 12 19:57:36 localhost kernel: [ 1144]     0  1144   138419       97      87     2571             0 tuned
+  3950	Sep 12 19:57:36 localhost kernel: [ 1148]     0  1148    61093        3      49      276             0 rsyslogd
+  3951	Sep 12 19:57:36 localhost kernel: [ 1150]     0  1150    48932        9      48      292             0 cupsd
+  3952	Sep 12 19:57:36 localhost kernel: [ 1157]     0  1157   154598        1     144     1303             0 libvirtd
+  3953	Sep 12 19:57:36 localhost kernel: [ 1161]     0  1161    31559       16      17      140             0 crond
+  3954	Sep 12 19:57:36 localhost kernel: [ 1163]     0  1163   118845        0      49      273             0 gdm
+  3955	Sep 12 19:57:36 localhost kernel: [ 1164]     0  1164     6465        1      17       52             0 atd
+  3956	Sep 12 19:57:36 localhost kernel: [ 1564]     0  1564    20740        1      43      217         -1000 sshd
+  3957	Sep 12 19:57:36 localhost kernel: [ 2336]     0  2336    22895       17      43      242             0 master
+  3958	Sep 12 19:57:36 localhost kernel: [ 2338]    89  2338    22965        1      44      263             0 qmgr
+  3959	Sep 12 19:57:36 localhost kernel: [ 2355]     0  2355    69848       97     130    12073             0 Xorg
+  3960	Sep 12 19:57:36 localhost kernel: [ 2359]     0  2359   102309       35     146      537             0 smbd
+  3961	Sep 12 19:57:36 localhost kernel: [ 2365]     0  2365   100855       66     137      521             0 smbd-notifyd
+  3962	Sep 12 19:57:36 localhost kernel: [ 2366]     0  2366   100951       41     137      506             0 cleanupd
+  3963	Sep 12 19:57:36 localhost kernel: [ 2383]     0  2383   102307       35     139      537             0 lpqd
+  3964	Sep 12 19:57:36 localhost kernel: [ 2513]    99  2513     3889        2      11       46             0 dnsmasq
+  3965	Sep 12 19:57:36 localhost kernel: [ 2514]     0  2514     3882        1      11       44             0 dnsmasq
+  3966	Sep 12 19:57:36 localhost kernel: [ 2599]     0  2599    87503        0      53      313             0 upowerd
+  3967	Sep 12 19:57:36 localhost kernel: [ 2635]   996  2635   101056        0      50      383             0 colord
+  3968	Sep 12 19:57:36 localhost kernel: [ 2641]     0  2641    65159        7      26       97             0 pcscd
+  3969	Sep 12 19:57:36 localhost kernel: [ 2701]     0  2701   120546       36      53     1120             0 packagekitd
+  3970	Sep 12 19:57:36 localhost kernel: [ 2706]     0  2706    12855        0      27      149             0 wpa_supplicant
+  3971	Sep 12 19:57:36 localhost kernel: [ 2727]     0  2727    92721        0      46      859             0 udisksd
+  3972	Sep 12 19:57:36 localhost kernel: [ 2796]     0  2796    93855        6      70      581             0 gdm-session-wor
+  3973	Sep 12 19:57:36 localhost kernel: [ 2814]  1000  2814    97223        0      40      233             0 gnome-keyring-d
+  3974	Sep 12 19:57:36 localhost kernel: [ 2819]  1000  2819   143863        0     107     1043             0 gnome-session
+  3975	Sep 12 19:57:37 localhost kernel: [ 2826]  1000  2826     3489        0      12       49             0 dbus-launch
+  3976	Sep 12 19:57:37 localhost kernel: [ 2827]  1000  2827     6963        1      16      327             0 dbus-daemon
+  3977	Sep 12 19:57:37 localhost kernel: [ 2884]  1000  2884    95136        0      38      176             0 gvfsd
+  3978	Sep 12 19:57:37 localhost kernel: [ 2889]  1000  2889   108739        0      45      734             0 gvfsd-fuse
+  3979	Sep 12 19:57:37 localhost kernel: [ 2975]  1000  2975    13338       11      28      135             0 ssh-agent
+  3980	Sep 12 19:57:37 localhost kernel: [ 3003]  1000  3003    84479        0      33      162             0 at-spi-bus-laun
+  3981	Sep 12 19:57:37 localhost kernel: [ 3008]  1000  3008     6759        1      17      238             0 dbus-daemon
+  3982	Sep 12 19:57:37 localhost kernel: [ 3010]  1000  3010    50321        0      34      715             0 at-spi2-registr
+  3983	Sep 12 19:57:37 localhost kernel: [ 3029]  1000  3029   295254      215     223     1953             0 gnome-settings-
+  3984	Sep 12 19:57:37 localhost kernel: [ 3042]  1000  3042   140027        2     101      734             0 pulseaudio
+  3985	Sep 12 19:57:37 localhost kernel: [ 3061]  1000  3061   147249        0     100      408             0 gsd-printer
+  3986	Sep 12 19:57:37 localhost kernel: [ 3078]  1000  3078   525653     3087     464    68105             0 gnome-shell
+  3987	Sep 12 19:57:37 localhost kernel: [ 3092]  1000  3092   117569        0      50      557             0 ibus-daemon
+  3988	Sep 12 19:57:37 localhost kernel: [ 3096]  1000  3096    98288        0      46      199             0 ibus-dconf
+  3989	Sep 12 19:57:37 localhost kernel: [ 3100]  1000  3100   113224        0     109      570             0 ibus-x11
+  3990	Sep 12 19:57:37 localhost kernel: [ 3104]  1000  3104   257822        0     259     1707             0 gnome-shell-cal
+  3991	Sep 12 19:57:37 localhost kernel: [ 3112]  1000  3112   396146        0     295     1887             0 evolution-sourc
+  3992	Sep 12 19:57:37 localhost kernel: [ 3118]  1000  3118   117326        0      62      868             0 mission-control
+  3993	Sep 12 19:57:37 localhost kernel: [ 3121]  1000  3121   143912        0      95     1677             0 caribou
+  3994	Sep 12 19:57:37 localhost kernel: [ 3130]  1000  3130   178689        0     152     1742             0 goa-daemon
+  3995	Sep 12 19:57:37 localhost kernel: [ 3133]  1000  3133   100239        0      48      360             0 gvfs-udisks2-vo
+  3996	Sep 12 19:57:37 localhost kernel: [ 3143]  1000  3143    96618        0      43      208             0 gvfs-mtp-volume
+  3997	Sep 12 19:57:37 localhost kernel: [ 3152]  1000  3152   101745       55      95      349             0 goa-identity-se
+  3998	Sep 12 19:57:37 localhost kernel: [ 3155]  1000  3155    98887        0      48      257             0 gvfs-gphoto2-vo
+  3999	Sep 12 19:57:37 localhost kernel: [ 3163]  1000  3163    93429        0      37      185             0 gvfs-goa-volume
+  4000	Sep 12 19:57:37 localhost kernel: [ 3168]  1000  3168   118472        0      52      773             0 gvfs-afc-volume
+  4001	Sep 12 19:57:37 localhost kernel: [ 3177]  1000  3177   360510        0     192     2825             0 nautilus
+  4002	Sep 12 19:57:37 localhost kernel: [ 3184]  1000  3184   131493        0     140     1291             0 abrt-applet
+  4003	Sep 12 19:57:37 localhost kernel: [ 3189]  1000  3189    94578       80     130      874             0 vmtoolsd
+  4004	Sep 12 19:57:37 localhost kernel: [ 3190]  1000  3190   117575        0      75      741             0 tracker-miner-a
+  4005	Sep 12 19:57:37 localhost kernel: [ 3193]  1000  3193   177640        0      89     1349             0 tracker-miner-f
+  4006	Sep 12 19:57:37 localhost kernel: [ 3195]  1000  3195   161223        0      98     1333             0 tracker-extract
+  4007	Sep 12 19:57:37 localhost kernel: [ 3199]  1000  3199   271316        0     273     2320             0 evolution-alarm
+  4008	Sep 12 19:57:37 localhost kernel: [ 3200]  1000  3200   117506        0      74      641             0 tracker-miner-u
+  4009	Sep 12 19:57:37 localhost kernel: [ 3205]  1000  3205    36201        1      41      210             0 escd
+  4010	Sep 12 19:57:37 localhost kernel: [ 3208]  1000  3208   189377        0     154     2294             0 gnome-software
+  4011	Sep 12 19:57:37 localhost kernel: [ 3222]  1000  3222   134650        0      71     1842             0 tracker-store
+  4012	Sep 12 19:57:37 localhost kernel: [ 3274]  1000  3274   378189        0     313    11351             0 evolution-calen
+  4013	Sep 12 19:57:37 localhost kernel: [ 3307]  1000  3307   117949        0      52      246             0 gvfsd-trash
+  4014	Sep 12 19:57:37 localhost kernel: [ 3337]  1000  3337    79871        0      44      218             0 ibus-engine-sim
+  4015	Sep 12 19:57:37 localhost kernel: [ 3409]  1000  3409   113569        0      44      184             0 gvfsd-burn
+  4016	Sep 12 19:57:37 localhost kernel: [ 3469]  1000  3469    78179        0      40      180             0 gvfsd-metadata
+  4017	Sep 12 19:57:37 localhost kernel: [ 3693]  1000  3693    44631        0      24      132             0 dconf-service
+  4018	Sep 12 19:57:37 localhost kernel: [74132]  1000 74132   143152        0     134     3256             0 gnome-terminal-
+  4019	Sep 12 19:57:37 localhost kernel: [74136]  1000 74136     2123        1       9       30             0 gnome-pty-helpe
+  4020	Sep 12 19:57:37 localhost kernel: [74137]  1000 74137    29173        2      14      409             0 bash
+  4021	Sep 12 19:57:37 localhost kernel: [74186]     0 74186    54559        1      63      260             0 sudo
+  4022	Sep 12 19:57:37 localhost kernel: [74197]     0 74197    52982        1      61      177             0 su
+  4023	Sep 12 19:57:37 localhost kernel: [74200]     0 74200    32942        0      21      216             0 zsh
+  4024	Sep 12 19:57:37 localhost kernel: [74224]     0 74224   437601     1698     414    70697             0 qtcreator
+  4025	Sep 12 19:57:37 localhost kernel: [74232]     0 74232     4020        1      11       71             0 dbus-launch
+  4026	Sep 12 19:57:37 localhost kernel: [74233]     0 74233     6646        2      18       92             0 dbus-daemon
+  4027	Sep 12 19:57:37 localhost kernel: [74369]  1000 74369    29173        2      16      410             0 bash
+  4028	Sep 12 19:57:37 localhost kernel: [74412]     0 74412    54559        1      61      261             0 sudo
+  4029	Sep 12 19:57:37 localhost kernel: [74423]     0 74423    52982        1      56      177             0 su
+  4030	Sep 12 19:57:37 localhost kernel: [74426]     0 74426    32979        1      22      242             0 zsh
+  4031	Sep 12 19:57:37 localhost kernel: [77803]  1000 77803   105819     1917     152      568             0 smbd
+  4032	Sep 12 19:57:37 localhost kernel: [84553]     0 84553    28318        0      14       97             0 xdg-open
+  4033	Sep 12 19:57:37 localhost kernel: [84642]     0 84642   273483    12300     211     4054             0 nautilus
+  4034	Sep 12 19:57:37 localhost kernel: [86528]     0 86528    44631        0      24      121             0 dconf-service
+  4035	Sep 12 19:57:37 localhost kernel: [86891]     0 86891   143557        0     134     4195             0 gnome-terminal-
+  4036	Sep 12 19:57:37 localhost kernel: [86895]     0 86895    95136        0      41      165             0 gvfsd
+  4037	Sep 12 19:57:37 localhost kernel: [86900]     0 86900   108739        0      43      224             0 gvfsd-fuse
+  4038	Sep 12 19:57:37 localhost kernel: [86908]     0 86908     2123        2       9       31             0 gnome-pty-helpe
+  4039	Sep 12 19:57:37 localhost kernel: [86909]     0 86909    32978        1      22      226             0 zsh
+  4040	Sep 12 19:57:37 localhost kernel: [86943]     0 86943    32974        2      22      218             0 zsh
+  4041	Sep 12 19:57:37 localhost kernel: [112894]  1000 112894    36965       27      30       93             0 gconfd-2
+  4042	Sep 12 19:57:37 localhost kernel: [14155]     0 14155    37060       36      73      306             0 sshd
+  4043	Sep 12 19:57:37 localhost kernel: [14159]     0 14159    32979        2      20      235             0 zsh
+  4044	Sep 12 19:57:37 localhost kernel: [90837]     0 90837    37062       15      75      326             0 sshd
+  4045	Sep 12 19:57:37 localhost kernel: [36863]     0 36863    33064        1      20      346             0 zsh
+  4046	Sep 12 19:57:37 localhost kernel: [56715]     0 56715    37062       14      74      323             0 sshd
+  4047	Sep 12 19:57:37 localhost kernel: [56723]     0 56723    33000        1      19      281             0 zsh
+  4048	Sep 12 19:57:37 localhost kernel: [57833]     0 57833   827885   380740    1564   280481             0 redis-server
+  4049	Sep 12 19:57:37 localhost kernel: [58026]     0 58026    32979       16      20      218             0 zsh
+  4050	Sep 12 19:57:37 localhost kernel: [58310]     0 58310     1605        0       9       27             0 test
+  4051	Sep 12 19:57:37 localhost kernel: [58625]     0 58625    39432      120      31       72             0 top
+  4052	Sep 12 19:57:37 localhost kernel: [60433]     0 60433    32979        3      19      231             0 zsh
+  4053	Sep 12 19:57:37 localhost kernel: [60657]    89 60657    22921       22      43      228             0 pickup
+  4054	Sep 12 19:57:37 localhost kernel: [60830]     0 60830    26977       23      10        0             0 sleep
+  4055	Sep 12 19:57:37 localhost kernel: Out of memory: Kill process 57833 (redis-server) score 648 or sacrifice child
+  4056	Sep 12 19:57:37 localhost kernel: Killed process 57833 (redis-server) total-vm:3311540kB, anon-rss:1522876kB, file-rss:84kB, shmem-rss:0kB
+  4057	Sep 12 19:57:37 localhost kernel: test[58310]: segfault at 0 ip 0000000000400c94 sp 00007ffd18dad2c0 error 4 in test[400000+1000]
+  4068	Sep 12 19:58:24 localhost kernel: device lo entered promiscuous mode

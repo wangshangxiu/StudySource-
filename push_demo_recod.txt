@@ -1,0 +1,768 @@
+40.90.186.135(dis) 10003
+13) "deviceVoipToken"
+14) "B06793EB811942939B2FFB318B422A88:aae716eedeb7de542c93ac840d61481ea05ca62798c2d922debf22020915e2fa"
+15) "appid"
+16) "100"
+17) "callState"
+18) "0"
+19) "deviceToken"
+20) "B06793EB811942939B2FFB318B422A88:7fa5459360e46acd57dd1988db3c35b0076685a288c071235db1a06dd95aba99"
+
+
+40.90.189.62(dev) seven 246740
+ 5) "deviceVoipToken"
+ 6) "AD21185CEEA04A2BB5A32EB9220809FC:05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358"
+33) "deviceToken"
+34) "
+
+
+
+40.90.189.62(dev) sam 246726
+23) "deviceToken"
+24) "ABE1161CA11A40038947CEF8B814A8BB:c365fc2d7f29f03f7d4400d90df9fe9c6e3b32b1b645392872f940c69d735861"
+33) "deviceVoipToken"
+34) "ABE1161CA11A40038947CEF8B814A8BB:a20455e5f12f7e6021cfca07444ae3be8a1cf03606ffb1ef8961d2ac8534e506"
+
+
+
+
+
+40.90.186.135(dis) 10003
+
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dis aae716eedeb7de542c93ac840d61481ea05ca62798c2d922debf22020915e2fa  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.140.155
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/aae716eedeb7de542c93ac840d61481ea05ca62798c2d922debf22020915e2fa
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 200
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dev aae716eedeb7de542c93ac840d61481ea05ca62798c2d922debf22020915e2fa  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.138.73
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/aae716eedeb7de542c93ac840d61481ea05ca62798c2d922debf22020915e2fa
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dev aae716eedeb7de542c93ac840d61481ea05ca62798c2d922debf22020915e2fa  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.165.218
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/aae716eedeb7de542c93ac840d61481ea05ca62798c2d922debf22020915e2fa
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dis aae716eedeb7de542c93ac840d61481ea05ca62798c2d922debf22020915e2fa  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.133.56
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/aae716eedeb7de542c93ac840d61481ea05ca62798c2d922debf22020915e2fa
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"TopicDisallowed"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+
+
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dis 7fa5459360e46acd57dd1988db3c35b0076685a288c071235db1a06dd95aba99  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.136.153
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/7fa5459360e46acd57dd1988db3c35b0076685a288c071235db1a06dd95aba99
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"TopicDisallowed"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dev 7fa5459360e46acd57dd1988db3c35b0076685a288c071235db1a06dd95aba99  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.165.219
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/7fa5459360e46acd57dd1988db3c35b0076685a288c071235db1a06dd95aba99
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dev 7fa5459360e46acd57dd1988db3c35b0076685a288c071235db1a06dd95aba99  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.138.73
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/7fa5459360e46acd57dd1988db3c35b0076685a288c071235db1a06dd95aba99
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dis 7fa5459360e46acd57dd1988db3c35b0076685a288c071235db1a06dd95aba99  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.138.24
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/7fa5459360e46acd57dd1988db3c35b0076685a288c071235db1a06dd95aba99
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 200
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+
+40.90.189.62(dev) seven 246740
+
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dis 05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.150.160
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dev 05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.165.219
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 200
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dev 05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.165.218
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"TopicDisallowed"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dis 05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.134.27
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+
+
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dis 05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.150.160
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dev 05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.165.219
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 200
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dev 05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.165.218
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"TopicDisallowed"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dis 05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.134.27
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/05c31b1f079b5ac60025a8dadb831c783dd2ec4ea667dd28bfab74d609638358
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dis 9e2f841e78808fce767b7d49851acd6f8675cb479d66cdb246e086cf6a20bc80  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.155.155
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/9e2f841e78808fce767b7d49851acd6f8675cb479d66cdb246e086cf6a20bc80
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dev 9e2f841e78808fce767b7d49851acd6f8675cb479d66cdb246e086cf6a20bc80  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.166.29
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/9e2f841e78808fce767b7d49851acd6f8675cb479d66cdb246e086cf6a20bc80
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"TopicDisallowed"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dev 9e2f841e78808fce767b7d49851acd6f8675cb479d66cdb246e086cf6a20bc80  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.166.27
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/9e2f841e78808fce767b7d49851acd6f8675cb479d66cdb246e086cf6a20bc80
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 200
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dis 9e2f841e78808fce767b7d49851acd6f8675cb479d66cdb246e086cf6a20bc80  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.147.62
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/9e2f841e78808fce767b7d49851acd6f8675cb479d66cdb246e086cf6a20bc80
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+
+40.90.189.62(dev) sam 246726
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dis a20455e5f12f7e6021cfca07444ae3be8a1cf03606ffb1ef8961d2ac8534e506  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.160.207
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/a20455e5f12f7e6021cfca07444ae3be8a1cf03606ffb1ef8961d2ac8534e506
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dev a20455e5f12f7e6021cfca07444ae3be8a1cf03606ffb1ef8961d2ac8534e506  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.138.73
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/a20455e5f12f7e6021cfca07444ae3be8a1cf03606ffb1ef8961d2ac8534e506
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"DeviceTokenNotForTopic"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dev a20455e5f12f7e6021cfca07444ae3be8a1cf03606ffb1ef8961d2ac8534e506  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.166.27
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/a20455e5f12f7e6021cfca07444ae3be8a1cf03606ffb1ef8961d2ac8534e506
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"DeviceTokenNotForTopic"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dis a20455e5f12f7e6021cfca07444ae3be8a1cf03606ffb1ef8961d2ac8534e506  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.139.183
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/a20455e5f12f7e6021cfca07444ae3be8a1cf03606ffb1ef8961d2ac8534e506
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+
+
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dis c365fc2d7f29f03f7d4400d90df9fe9c6e3b32b1b645392872f940c69d735861  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.161.208
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/c365fc2d7f29f03f7d4400d90df9fe9c6e3b32b1b645392872f940c69d735861
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_voiptoken_dev c365fc2d7f29f03f7d4400d90df9fe9c6e3b32b1b645392872f940c69d735861  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.166.27
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/c365fc2d7f29f03f7d4400d90df9fe9c6e3b32b1b645392872f940c69d735861
+apns-topic: com.onlyy.kimi.voip
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"DeviceTokenNotForTopic"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dev c365fc2d7f29f03f7d4400d90df9fe9c6e3b32b1b645392872f940c69d735861  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.138.73
+socket connect ok: fd=3, host: api.development.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/c365fc2d7f29f03f7d4400d90df9fe9c6e3b32b1b645392872f940c69d735861
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"DeviceTokenNotForTopic"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo_devicetoken_dis c365fc2d7f29f03f7d4400d90df9fe9c6e3b32b1b645392872f940c69d735861  cer/cer/common.pem "helloworld"
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.134.25
+socket connect ok: fd=3, host: api.push.apple.com:443
+ssl allocation ok
+ssl handshaking ...
+Connected with encryption: ECDHE-RSA-AES256-GCM-SHA384
+ssl handshake ok
+[INFO] Stream ID = 1
+[INFO] C ----------------------------> S (HEADERS)
+:method: POST
+:path: /3/device/c365fc2d7f29f03f7d4400d90df9fe9c6e3b32b1b645392872f940c69d735861
+apns-topic: com.onlyy.kimi
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C ----------------------------> S (DATA post body)
+helloworld
+[INFO] C <---------------------------- S (HEADERS begin)
+:status: 400
+apns-id: e77a3d12-bc9f-f410-a127-43f212597a9c
+[INFO] C <---------------------------- S (HEADERS end)
+on_data_chunk_recv_callback
+{"reason":"BadDeviceToken"}
+[INFO] C ----------------------------> S (GOAWAY)
+over.
+
+
+
+
+

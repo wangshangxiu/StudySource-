@@ -1,0 +1,416 @@
+[root@rabbitmq222 apns2-demo]# make 
+gcc -o apns2-demo apns2-demo.c -Wall -Wextra -Wno-unused-parameter \
+	-I/usr/local/nghttp2/include -L/usr/local/nghttp2/lib -lnghttp2 -lssl -lcrypto -Wl,-rpath,/usr/local/nghttp2/lib
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.133.151
+connecting to : 17.188.131.30
+connecting to : 17.188.135.153
+connecting to : 17.188.128.37
+connecting to : 17.188.140.185
+connecting to : 17.188.137.153
+connecting to : 17.188.139.183
+connecting to : 17.188.136.25
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# git checkout ./
+[root@rabbitmq222 apns2-demo]# sed -i "s/2197/2195/g" ./apns2-demo.c 
+[root@rabbitmq222 apns2-demo]# grep -Hrn "2197"
+README.md:32:    socket connect ok: fd=3, host: api.push.apple.com:2197
+[root@rabbitmq222 apns2-demo]# grep -Hrn "2195"
+apns2-demo.c:742:        uri = make_uri("api.push.apple.com", 2195, "/3/device/",
+apns2-demo.c:753:        uri = make_uri("api.push.apple.com", 2195, "/3/device/", argv[1], argv[2]);
+[root@rabbitmq222 apns2-demo]# make
+gcc -o apns2-demo apns2-demo.c -Wall -Wextra -Wno-unused-parameter \
+	-I/usr/local/nghttp2/include -L/usr/local/nghttp2/lib -lnghttp2 -lssl -lcrypto -Wl,-rpath,/usr/local/nghttp2/lib
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.131.24
+connecting to : 17.188.137.153
+connecting to : 17.188.129.157
+connecting to : 17.188.132.150
+connecting to : 17.188.133.154
+connecting to : 17.188.140.148
+connecting to : 17.188.128.33
+connecting to : 17.188.137.20
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.154.154
+connecting to : 17.188.152.164
+connecting to : 17.188.153.28
+connecting to : 17.188.150.158
+connecting to : 17.188.147.62
+connecting to : 17.188.154.162
+connecting to : 17.188.146.157
+connecting to : 17.188.148.35
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.164.138
+connecting to : 17.188.167.208
+connecting to : 17.188.167.17
+connecting to : 17.188.166.139
+connecting to : 17.188.161.72
+connecting to : 17.188.160.79
+connecting to : 17.188.165.138
+connecting to : 17.188.162.206
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.166.139
+connecting to : 17.188.161.72
+connecting to : 17.188.160.79
+connecting to : 17.188.165.138
+connecting to : 17.188.162.206
+connecting to : 17.188.164.138
+connecting to : 17.188.167.208
+connecting to : 17.188.167.17
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.166.139
+connecting to : 17.188.161.72
+connecting to : 17.188.160.79
+connecting to : 17.188.165.138
+connecting to : 17.188.162.206
+connecting to : 17.188.164.138
+connecting to : 17.188.167.208
+connecting to : 17.188.167.17
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.166.139
+connecting to : 17.188.163.16
+connecting to : 17.188.162.16
+connecting to : 17.188.161.204
+connecting to : 17.188.165.75
+connecting to : 17.188.168.13
+connecting to : 17.188.162.206
+connecting to : 17.188.160.12
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.163.141
+connecting to : 17.188.162.200
+connecting to : 17.188.164.209
+connecting to : 17.188.164.74
+connecting to : 17.188.161.144
+connecting to : 17.188.164.81
+connecting to : 17.188.161.80
+connecting to : 17.188.166.144
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# make
+gcc -o apns2-demo apns2-demo.c -Wall -Wextra -Wno-unused-parameter \
+	-I/usr/local/nghttp2/include -L/usr/local/nghttp2/lib -lnghttp2 -lssl -lcrypto -Wl,-rpath,/usr/local/nghttp2/lib
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.158.29
+connecting to : 17.188.151.158
+connecting to : 17.188.157.28
+connecting to : 17.188.155.155
+connecting to : 17.188.151.30
+connecting to : 17.188.145.163
+connecting to : 17.188.149.163
+connecting to : 17.188.144.172
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.167.205
+connecting to : 17.188.160.11
+connecting to : 17.188.161.208
+connecting to : 17.188.164.14
+connecting to : 17.188.166.89
+connecting to : 17.188.161.201
+connecting to : 17.188.163.207
+connecting to : 17.188.161.11
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ll -lrt
+total 96
+-rw-rw-rw-+ 1 root root  4474 Dec 12 11:24 kimi.pem1114
+-rw-rw-rw-+ 1 thz  thz    399 Dec 12 11:24 Makefile
+-rw-rw-rw-+ 1 root root  5339 Dec 12 11:24 tags
+-rw-rw-rw-+ 1 root root  4474 Dec 12 11:24 kimi.pem
+-rw-rw-rw-+ 1 root root  4474 Dec 12 13:57 test.pem
+-rw-rw-rw-+ 1 root root  1435 Dec 12 15:22 README.md
+-rw-rw-rw-+ 1 root root 21337 Dec 12 15:26 apns2-demo.c
+-rwxrwxrwx+ 1 root root 31272 Dec 12 15:43 apns2-demo
+[root@rabbitmq222 apns2-demo]# vim apns2-demo.c 
+[root@rabbitmq222 apns2-demo]# make
+gcc -o apns2-demo apns2-demo.c -Wall -Wextra -Wno-unused-parameter \
+	-I/usr/local/nghttp2/include -L/usr/local/nghttp2/lib -lnghttp2 -lssl -lcrypto -Wl,-rpath,/usr/local/nghttp2/lib
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.165.219
+connecting to : 17.188.166.29
+connecting to : 17.188.165.218
+connecting to : 17.188.166.27
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.166.27
+connecting to : 17.188.165.219
+connecting to : 17.188.166.29
+connecting to : 17.188.165.218
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.138.73
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.138.73
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.165.219
+connecting to : 17.188.166.29
+connecting to : 17.188.165.218
+connecting to : 17.188.166.27
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# vim apns2-demo.c 
+[root@rabbitmq222 apns2-demo]# make
+gcc -o apns2-demo apns2-demo.c -Wall -Wextra -Wno-unused-parameter \
+	-I/usr/local/nghttp2/include -L/usr/local/nghttp2/lib -lnghttp2 -lssl -lcrypto -Wl,-rpath,/usr/local/nghttp2/lib
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.138.23
+socket connect ok: fd=3, host: gateway.push.apple.com:2195
+ssl allocation error
+FATAL: ssl connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.129.25
+socket connect ok: fd=3, host: gateway.push.apple.com:2195
+ssl allocation error
+FATAL: ssl connect fail.
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.137.21
+socket connect ok: fd=3, host: gateway.push.apple.com:2195
+ssl allocation error
+FATAL: ssl connect fail.
+[root@rabbitmq222 apns2-demo]# vim apns2-demo.c 
+[root@rabbitmq222 apns2-demo]# sed -i "s/2195/443/g" ./apns2-demo.c 
+[root@rabbitmq222 apns2-demo]# make
+gcc -o apns2-demo apns2-demo.c -Wall -Wextra -Wno-unused-parameter \
+	-I/usr/local/nghttp2/include -L/usr/local/nghttp2/lib -lnghttp2 -lssl -lcrypto -Wl,-rpath,/usr/local/nghttp2/lib
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.147.163
+connecting to : 17.188.152.29
+connecting to : 17.188.147.161
+connecting to : 17.188.144.37
+connecting to : 17.188.154.26
+connecting to : 17.188.148.59
+connecting to : 17.188.151.26
+connecting to : 17.188.151.159
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.148.59
+connecting to : 17.188.151.26
+connecting to : 17.188.151.159
+connecting to : 17.188.147.163
+connecting to : 17.188.152.29
+connecting to : 17.188.147.161
+connecting to : 17.188.144.37
+connecting to : 17.188.154.26
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.163.204
+connecting to : 17.188.162.15
+connecting to : 17.188.162.8
+connecting to : 17.188.162.10
+connecting to : 17.188.164.142
+connecting to : 17.188.165.79
+connecting to : 17.188.167.82
+connecting to : 17.188.160.17
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.142.154
+connecting to : 17.188.142.155
+connecting to : 17.188.131.23
+connecting to : 17.188.139.156
+connecting to : 17.188.131.157
+connecting to : 17.188.135.27
+connecting to : 17.188.133.23
+connecting to : 17.188.134.150
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.131.23
+connecting to : 17.188.139.156
+connecting to : 17.188.131.157
+connecting to : 17.188.135.27
+connecting to : 17.188.133.23
+connecting to : 17.188.134.150
+connecting to : 17.188.142.154
+connecting to : 17.188.142.155
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.142.155
+connecting to : 17.188.131.23
+connecting to : 17.188.139.156
+connecting to : 17.188.131.157
+connecting to : 17.188.135.27
+connecting to : 17.188.133.23
+connecting to : 17.188.134.150
+connecting to : 17.188.142.154
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.160.140
+connecting to : 17.188.165.142
+connecting to : 17.188.167.74
+connecting to : 17.188.161.16
+connecting to : 17.188.160.200
+connecting to : 17.188.165.8
+connecting to : 17.188.167.82
+connecting to : 17.188.162.143
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# 
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.167.81
+connecting to : 17.188.164.205
+connecting to : 17.188.166.140
+connecting to : 17.188.161.202
+connecting to : 17.188.164.78
+connecting to : 17.188.161.14
+connecting to : 17.188.165.136
+connecting to : 17.188.166.204
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# vim apns2-demo
+apns2-demo    apns2-demo.c  
+[root@rabbitmq222 apns2-demo]# vim apns2-demo.c 
+[root@rabbitmq222 apns2-demo]# make
+gcc -o apns2-demo apns2-demo.c -Wall -Wextra -Wno-unused-parameter \
+	-I/usr/local/nghttp2/include -L/usr/local/nghttp2/lib -lnghttp2 -lssl -lcrypto -Wl,-rpath,/usr/local/nghttp2/lib
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.137.190
+connecting to : 17.188.136.189
+connecting to : 17.188.137.58
+connecting to : 17.188.132.189
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.136.189
+connecting to : 17.188.137.58
+connecting to : 17.188.132.189
+connecting to : 17.188.137.190
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.137.58
+connecting to : 17.188.132.189
+connecting to : 17.188.137.190
+connecting to : 17.188.136.189
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# make
+gcc -o apns2-demo apns2-demo.c -Wall -Wextra -Wno-unused-parameter \
+	-I/usr/local/nghttp2/include -L/usr/local/nghttp2/lib -lnghttp2 -lssl -lcrypto -Wl,-rpath,/usr/local/nghttp2/lib
+[root@rabbitmq222 apns2-demo]# ./apns2-demo 
+nghttp2 version: 1.32.0-DEV
+tls/ssl version: TLSv1.2
+ns looking up ...
+connecting to : 17.188.137.58
+connecting to : 17.188.132.189
+connecting to : 17.188.137.190
+connecting to : 17.188.136.189
+FATAL: socket connect fail.
+[root@rabbitmq222 apns2-demo]# 

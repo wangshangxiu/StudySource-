@@ -1,0 +1,29 @@
+docker是一种虚拟化技术，轻量级。启动快，可以由服务编排框架调度。跟windows的VM差不多。
+
+
+docker环境安装,运用
+Centos
+    yum update 
+    tee /etc/yum.repos.d/docker.repo <<-'EOF'
+  
+    [dockerrepo]
+    name=Docker Repository
+    baseurl=https://yum.dockerproject.org/repo/main/centos/7/
+    enabled=1
+    gpgcheck=1
+    gpgkey=https://yum.dockerproject.org/gpg
+    EOF
+  
+    yum install docker-engine
+    service docker start
+
+docker 运用
+
+docker之container
+运行一个container的本身就是开启一个具有独立namespace的进程
+　　进程有自己的网络，文件系统等
+docker通过run命令来启动一个container
+运行一个container必须要指定一个image作为初始化的文件系统
+ 
+对于不存在的image，docker会自动去registry里面下载对应的image，然后再运行container
+
